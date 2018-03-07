@@ -33,7 +33,8 @@ Optional<Integer> head =  ListFactory.of(1, 2, 3).headOption() // head =  Option
 - You can get all of the list elements except the first one by calling tail() method :
 
 ```java
-integerList.tail() // throws exception if the list is empty. 
+List<Integer> tail = ListFactory.of(1, 2, 3).tail() // throws exception if the list is empty. 
+// tail = List(2, 3);
 ```
 - You can filter Your List by calling the filter() method :
 ```java
@@ -45,7 +46,7 @@ List<Integer> filteredList =  ListFactory.of(1, 2, 3).filter(i -> i % 2 == 0);
 List<String> mappedList =  ListFactory.of(1, 2, 3).map(i -> i + "!"); 
 // mappedList = List(1!, 2!, 3!);
 ```
--You can get a particular element by calling the at() or the apply() method :
+- You can get a particular element by calling the at() or the apply() method :
 ```java
 int specificElement =  ListFactory.of(1, 2, 3).at(1); 
 int specificElement =  ListFactory.of(1, 2, 3).apply(1); 
