@@ -48,8 +48,9 @@ List<String> mappedList =  ListFactory.of(1, 2, 3).map(i -> i + "!");
 ```
 - You can get a particular element by calling the at() or the apply() method :
 ```java
-int specificElement =  ListFactory.of(1, 2, 3).at(1); 
-int specificElement =  ListFactory.of(1, 2, 3).apply(1); 
-// specificElement = 2;
+int specificElement1 =  ListFactory.of(1, 2, 3).at(1); 
+int specificElement2 =  ListFactory.of(1, 2, 3).apply(1); 
+// specificElement1 = 2;
+// specificElement2 = 2;
 // note that both at and apply methods may throw exception when the list is empty.
 ```
