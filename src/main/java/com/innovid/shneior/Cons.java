@@ -8,8 +8,8 @@ import java.util.function.Predicate;
 
 public class Cons<T> implements List<T> {
 
-    private T head;
-    private List<T> tail;
+    private final T head;
+    private final List<T> tail;
 
     public Cons(T head, List<T> tail) {
       this.head = head;
@@ -107,7 +107,7 @@ public class Cons<T> implements List<T> {
     @Override
     public List<T> takeWhile(Predicate<T> predicate) {
        if (predicate.test(head)) {
-          return new Cons<T>(head, tail.takeWhile(predicate));
+          return new Cons<>(head, tail.takeWhile(predicate));
        }
        return new Nil<>();
     }
@@ -141,10 +141,9 @@ public class Cons<T> implements List<T> {
         if (index == 0) {
             return tail;
         }
-        return new Cons<T>(head, tail.remove(-- index));
+        return new Cons<>(head, tail.remove(-- index));
     }
 
-    // intellij generated code
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -154,25 +153,9 @@ public class Cons<T> implements List<T> {
                 Objects.equals(tail, cons.tail);
     }
 
-    // intellij generated code
     @Override
     public int hashCode() {
         return Objects.hash(head, tail);
     }
-
-    //    @Override
-//    public boolean equals(Object object) {
-//        if (object == null || !(object instanceof Cons)) {
-//            return false;
-//        }
-//        List<T> list = (List<T>) object;
-//        if (this.head == null) {
-//            return tail.equals(list.tail());
-//        }
-//        if (this.head.equals(list.head())) {
-//            return tail.equals(list.tail());
-//        }
-//        return false;
-//    }
 
 }

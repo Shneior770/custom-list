@@ -298,6 +298,16 @@ public class ConsTest {
     }
 
     @Test
+    public void getStringTest_whenInvoked_thenShouldReturnUnformattedStringOfTheList() {
+        String expected = "1, 2, 3, ";
+        List<Integer> list = ListFactory.of(1, 2, 3);
+
+        String actual = list.getString();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void toStringTest_whenInvoked_thenShouldReturnFormattedString() {
         List<Integer> list = ListFactory.of(1, 2, 3);
         String expected = "List(1, 2, 3)";

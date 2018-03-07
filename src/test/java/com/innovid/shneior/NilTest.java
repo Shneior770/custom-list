@@ -90,7 +90,7 @@ public class NilTest {
 
     @Test (expected = IndexOutOfBoundsException.class)
     public void applyTest_givenAnyNumber_thenShouldThrowIndexOutOfBoundsException() {
-        List<String> nil = new Nil<>();
+        List<String> nil = ListFactory.of();
 
         nil.apply(0);
     }
@@ -148,7 +148,7 @@ public class NilTest {
 
     @Test  (expected = IndexOutOfBoundsException.class)
     public void removeTest_givenAnyNumber_thenShouldThrowIndexOutOfBoundsException() {
-        List<String> nil = new Nil<>();
+        List<String> nil = ListFactory.of();
 
         nil.remove(1);
     }
@@ -165,7 +165,7 @@ public class NilTest {
 
     @Test
     public void equalsTest_givenNullParam_thenShouldReturnFalse() {
-        List<Integer> list = new Nil<>();
+        List<Integer> list = ListFactory.of();
 
         boolean actual = list.equals(null);
 
@@ -175,7 +175,7 @@ public class NilTest {
     @Test
     public void equalsTest_givenNotSameInstanceObject_thenShouldReturnFalse() {
         List<Integer> list2 = ListFactory.of(1);
-        List<Integer> list1 = new Nil<>();
+        List<Integer> list1 = ListFactory.of();
 
         boolean actual = list1.equals(list2);
 
