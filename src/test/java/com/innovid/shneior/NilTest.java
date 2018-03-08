@@ -8,21 +8,21 @@ public class NilTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void headTest_whenInvoked_thenShouldThrowIllegalArgumentException() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         nil.head();
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void tailTest_whenInvoked_thenShouldThrowIllegalArgumentException() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         nil.tail();
     }
 
     @Test
     public void filterTest_givenAnyParam_thenShouldReturnNil() {
-        List<String> nil1 = ListFactory.of();
+        List<String> nil1 = ListFactory.empty();
         List<String> nil2 = nil1.filter(i -> true);
         List<String> nil3 = nil1.filter(null);
 
@@ -32,7 +32,7 @@ public class NilTest {
 
     @Test
     public void mapTest_givenAnyParam_thenShouldReturnNil() {
-        List<String> expected = ListFactory.of();
+        List<String> expected = ListFactory.empty();
 
         List<Boolean> actual1 = expected.map(i -> true);
         List<Integer> actual2 = expected.map(null);
@@ -43,7 +43,7 @@ public class NilTest {
 
     @Test
     public void isEmptyTest_whenInvoked_thenShouldReturnTrue() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         boolean actual = nil.isEmpty();
 
@@ -52,7 +52,7 @@ public class NilTest {
 
     @Test
     public void nonEmptyTest_whenInvoked_thenShouldReturnFalse() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         boolean actual = nil.nonEmpty();
 
@@ -61,7 +61,7 @@ public class NilTest {
 
     @Test
     public void sizeTest_whenInvoked_thenShouldReturnZero() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
         long expected = 0;
 
         long actual = nil.size();
@@ -71,7 +71,7 @@ public class NilTest {
 
     @Test
     public void takeTest_givenAnyNumber_thenShouldReturnNil() {
-        List<String> expected = ListFactory.of();
+        List<String> expected = ListFactory.empty();
 
         List<String> actual = expected.take(0);
 
@@ -81,7 +81,7 @@ public class NilTest {
 
     @Test
     public void dropTest_givenAnyNumber_thenShouldReturnNil() {
-        List<String> expected = ListFactory.of();
+        List<String> expected = ListFactory.empty();
 
         List<String> actual = expected.drop(0);
 
@@ -90,14 +90,14 @@ public class NilTest {
 
     @Test (expected = IndexOutOfBoundsException.class)
     public void applyTest_givenAnyNumber_thenShouldThrowIndexOutOfBoundsException() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         nil.apply(0);
     }
 
     @Test
     public void headOptionTest_whenInvoked_thenShouldReturnEmptyOptionalObject() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
         Optional<String> expected = Optional.empty();
 
         Optional<String> actual = nil.headOption();
@@ -108,7 +108,7 @@ public class NilTest {
 
     @Test
     public void takeWhileTest_givenAnyParam_thenShouldReturnNil() {
-        List<String> expected = ListFactory.of();
+        List<String> expected = ListFactory.empty();
         List<String> actual1 = expected.takeWhile(i -> true);
         List<String> actual2 = expected.takeWhile(null);
 
@@ -118,7 +118,7 @@ public class NilTest {
 
     @Test
     public void getStringTest_whenInvoked_thenShouldReturnEmptyString() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
         String expected = "";
 
         String actual = nil.getString();
@@ -128,7 +128,7 @@ public class NilTest {
 
     @Test
     public void foldLeftTest_givenTowParams_thenShouldReturnTheFirstParam() {
-        List<Integer> nil = ListFactory.of();
+        List<Integer> nil = ListFactory.empty();
         int expected = 1;
 
         int actual = nil.foldLeft(1, (a, b) -> a + b);
@@ -138,7 +138,7 @@ public class NilTest {
 
     @Test
     public void toStringTest_whenInvoked_thenShouldReturnFormattedStringOfEmptyList() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
         String expected = "List()";
 
         String actual = nil.toString();
@@ -148,15 +148,15 @@ public class NilTest {
 
     @Test  (expected = IndexOutOfBoundsException.class)
     public void removeTest_givenAnyNumber_thenShouldThrowIndexOutOfBoundsException() {
-        List<String> nil = ListFactory.of();
+        List<String> nil = ListFactory.empty();
 
         nil.remove(1);
     }
 
     @Test
     public void equalsTest_givenMatchingObjectAndElements_shouldReturnTrue() {
-        List<Integer> list1 = ListFactory.of();
-        List<Integer> list2 = ListFactory.of();
+        List<Integer> list1 = ListFactory.empty();
+        List<Integer> list2 = ListFactory.empty();
 
         boolean actual = list1.equals(list2);
 
@@ -165,7 +165,7 @@ public class NilTest {
 
     @Test
     public void equalsTest_givenNullParam_thenShouldReturnFalse() {
-        List<Integer> list = ListFactory.of();
+        List<Integer> list = ListFactory.empty();
 
         boolean actual = list.equals(null);
 
@@ -175,7 +175,7 @@ public class NilTest {
     @Test
     public void equalsTest_givenNotSameInstanceObject_thenShouldReturnFalse() {
         List<Integer> list2 = ListFactory.of(1);
-        List<Integer> list1 = ListFactory.of();
+        List<Integer> list1 = ListFactory.empty();
 
         boolean actual = list1.equals(list2);
 

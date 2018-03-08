@@ -32,4 +32,13 @@ public class ListFactoryTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void emptyTest_whenInvoked_thenShouldReturnNil() {
+        List expected = ListFactory.of();
+
+        Nil actual = ListFactory.empty();
+
+        assertEquals(expected, actual);
+    }
 }

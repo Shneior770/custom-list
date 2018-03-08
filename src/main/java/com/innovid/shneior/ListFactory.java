@@ -22,5 +22,8 @@ public class ListFactory {
         return new Cons<T>(args[num], get(args, num + 1));
     }
 
+    public static Nil empty() {
+        return new Nil();
+    }
 }
 

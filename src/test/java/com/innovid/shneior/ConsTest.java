@@ -28,7 +28,7 @@ public class ConsTest {
 
     @Test
     public void tailTest_whenInvokedWithEmptyTail_thenShouldReturnTheEmptyTail() {
-        Nil<Integer> expected = new Nil<>();
+        Nil expected = ListFactory.empty();
         List<Integer> list = ListFactory.of(1);
 
         List<Integer> actual = list.tail();
@@ -200,7 +200,7 @@ public class ConsTest {
 
     @Test
     public void dropTest_givenANumGreaterThanTheSizeOfTheList_thenShouldReturnEmptyList() {
-        List<Integer> expected = new Nil<>();
+        Nil expected = ListFactory.empty();
         List<Integer> list = ListFactory.of(1, 2, 3);
 
         List<Integer> actual =  list.drop(10);
