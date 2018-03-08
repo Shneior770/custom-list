@@ -1,6 +1,8 @@
 # Custom List Library.
-This library allows you to create a List in java, it is similar to the Java.util.List,  
+
+This library allows you to create a List in java. it is similar to the Java.util.List,  
 but provides some additional methods.
+
 ## Motivation:
 
 I wrote this project as apart of my _java_ exercise.  
@@ -38,7 +40,7 @@ Optional emptyHead = ListFactory.empty().headOption() // emptyHead = Optional.em
 List<Integer> tail = ListFactory.of(1, 2, 3).tail() // tail = List(2, 3);
 // note: this method may throw exception if the List is empty. 
 ```
-- You can get an element by providing its position in the List, either by calling the at() or the apply() method :
+- You can get an element by providing its index in the List, either by calling the at() or the apply() method :
 
 ```java
 int element1 =  ListFactory.of(1, 2, 3).at(1); // element1 = 2;
