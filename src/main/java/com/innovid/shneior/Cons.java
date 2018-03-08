@@ -73,7 +73,7 @@ public class Cons<T> implements List<T> {
     public List<T> take(int n) {
 
         if (n == 0) {
-            return this;
+            return new Nil<>();
         }
         if (n < 0) {
             throw new IndexOutOfBoundsException();
@@ -88,6 +88,7 @@ public class Cons<T> implements List<T> {
 
     @Override
     public List<T> drop(int n) {
+
         if (n == 0) {
             return this;
         }
@@ -144,6 +145,7 @@ public class Cons<T> implements List<T> {
 
  @Override
     public List<T> remove(int index) {
+
         if (index < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -155,6 +157,7 @@ public class Cons<T> implements List<T> {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cons<?> cons = (Cons<?>) o;

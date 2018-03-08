@@ -159,8 +159,8 @@ public class ConsTest {
     }
 
     @Test
-    public void takeTest_whenPassing0_thenShouldReturnTheEntireListElements() {
-        List<Integer> expected = ListFactory.of(1, 2, 3);
+    public void takeTest_whenPassing0_thenShouldReturnNil() {
+        List<Integer> expected = ListFactory.empty();
         List<Integer> list = ListFactory.of(1, 2, 3);
 
         List<Integer> actual =  list.take(0);
