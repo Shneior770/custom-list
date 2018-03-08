@@ -28,10 +28,9 @@ public class Cons<T> implements List<T> {
 
     @Override
     public List<T> filter(Predicate<T> predicate) {
+
         if (predicate.test(head)) {
-            List<T> filteredTail = tail.filter(predicate);
-            Cons<T> r = new Cons<>(head, filteredTail);
-            return r;
+            return new Cons<>(head, tail.filter(predicate));
         } else {
            return tail.filter(predicate);
         }
@@ -56,7 +55,7 @@ public class Cons<T> implements List<T> {
 
     @Override
     public long size() {
-    return tail.size() + 1;
+        return tail.size() + 1;
     }
 
     @Override
@@ -72,19 +71,26 @@ public class Cons<T> implements List<T> {
 
     @Override
     public List<T> take(int n) {
+
+        if (n == 0) {
+            return this;
+        }
         if (n < 0) {
             throw new IndexOutOfBoundsException();
         }
         if (n == 1) {
-            return new Cons<T>(head, new Nil<>());
+            return new Cons<>(head, new Nil<>());
         }
         else {
-             return new Cons<T>(head, tail.take(-- n));
+             return new Cons<>(head, tail.take(-- n));
         }
     }
 
     @Override
     public List<T> drop(int n) {
+        if (n == 0) {
+            return this;
+        }
         if (n < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -106,10 +112,12 @@ public class Cons<T> implements List<T> {
 
     @Override
     public List<T> takeWhile(Predicate<T> predicate) {
-       if (predicate.test(head)) {
+
+        if (predicate.test(head)) {
           return new Cons<>(head, tail.takeWhile(predicate));
-       }
-       return new Nil<>();
+        }
+
+        return new Nil<>();
     }
 
     @Override
@@ -121,6 +129,7 @@ public class Cons<T> implements List<T> {
     }
 
     public String getString() {
+
         if (head == null) {
             return "null" + ", " + tail.getString();
         }

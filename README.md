@@ -38,14 +38,14 @@ Optional emptyHead = ListFactory.empty().headOption() // emptyHead = Optional.em
 List<Integer> tail = ListFactory.of(1, 2, 3).tail() // tail = List(2, 3);
 // note: this method may throw exception if the List is empty. 
 ```
-- You can get an element by providing he's position in the List, either by calling the at() or the apply() method :
+- You can get an element by providing its position in the List, either by calling the at() or the apply() method :
 
 ```java
 int element1 =  ListFactory.of(1, 2, 3).at(1); // element1 = 2;
 int element2 =  ListFactory.of(1, 2, 3).apply(1); // element2 = 2;
 // note: both of this methods may throw exception when the List is empty.
 ```
-- You can remove an element by providing he's index in the List :
+- You can remove an element by providing its index in the List :
 
 ```java
 List<Integer> list = ListFactory.of(1, 2, 3).remove(1); // list = List(1, 3).

@@ -47,6 +47,14 @@ public class ConsTest {
     }
 
     @Test (expected = NullPointerException.class)
+    public void filterTest_whenInvokedOnAListWithNullElements_thenShouldThrowNullPointerException() {
+        List<Integer> list = ListFactory.of(1, 2, 3, null);
+
+        list.filter(null);
+    }
+
+
+    @Test (expected = NullPointerException.class)
     public void filterTest_whenPassingNullParam_thenShouldThrowNullPointerException() {
         List<Integer> list = ListFactory.of(1);
 
@@ -151,6 +159,16 @@ public class ConsTest {
     }
 
     @Test
+    public void takeTest_whenPassing0_thenShouldReturnTheEntireListElements() {
+        List<Integer> expected = ListFactory.of(1, 2, 3);
+        List<Integer> list = ListFactory.of(1, 2, 3);
+
+        List<Integer> actual =  list.take(0);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void takeTest_whenPassing1_thenShouldReturnListConsistOfTheFirstElementOfTheList() {
         List<Integer> expected = ListFactory.of(1);
         List<Integer> list = ListFactory.of(1, 2, 3);
@@ -184,6 +202,16 @@ public class ConsTest {
         List<Integer> list = ListFactory.of(1, 2, 3);
 
         List<Integer> actual =  list.drop(2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void dropTest_given0_thenShouldReturnTheEntireListElements() {
+        List<Integer> expected = ListFactory.of(1, 2, 3);
+        List<Integer> list = ListFactory.of(1, 2, 3);
+
+        List<Integer> actual =  list.drop(0);
 
         assertEquals(expected, actual);
     }
@@ -280,21 +308,21 @@ public class ConsTest {
         assertEquals(expected, actual);
     }
 
-    @Test (expected = NullPointerException.class)
+    @Test  (expected = NullPointerException.class)
     public void takeWhileTest_whenPassingANullParam_thenShouldThrowNullPointerException() {
         List<Integer> list = ListFactory.of(1);
 
         list.takeWhile(null);
+
     }
 
     @Test  (expected = NullPointerException.class)
     public void takeWhileTest_whenInvokedOnListWithNullParam_thenShouldThrowNullPointerException() {
-        List<Integer> expected = ListFactory.of(9, 3);
         List<Integer> list = ListFactory.of(9, null, 3);
 
-        List<Integer> actual = list.takeWhile(i -> i % 2 != 0);
+        list.takeWhile(i -> i % 2 != 0);
 
-        assertEquals(expected, actual);
+
     }
 
     @Test

@@ -1,15 +1,17 @@
 package com.innovid.shneior;
 
 /**
- * a factory class that heave a method
- * for creating empty or non empty List.
+ * a factory class that heave methods
+ * for creating non empty or empty List.
  */
 public class ListFactory {
 
     /**
-     * an helper for creating a List.
-     * example : ListFactory.of(1, 2, 3) ==> list:1,2,3;
-     * ListFactory.of() ==> list:();
+     *  This method is a helper that construct a new Instance of
+     *  a List for the given arguments.
+     * @param args the arguments to initialize the List with.
+     * @param <T>  the type of the List
+     * @return a List consist of the given arguments.
      */
     public static <T> List<T> of(T... args) {
       return get(args, 0);
@@ -19,9 +21,13 @@ public class ListFactory {
         if (num == args.length) {
             return new Nil<>();
         }
-        return new Cons<T>(args[num], get(args, num + 1));
+        return new Cons<>(args[num], get(args, num + 1));
     }
 
+    /**
+     * This method creates an Empty List.
+     * @return empty List.
+     */
     public static Nil empty() {
         return new Nil();
     }
