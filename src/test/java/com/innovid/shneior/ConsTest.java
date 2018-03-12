@@ -1,5 +1,4 @@
 package com.innovid.shneior;
-
 import org.junit.Test;
 import java.util.Optional;
 import static org.junit.Assert.*;
@@ -28,7 +27,7 @@ public class ConsTest {
 
     @Test
     public void tailTest_whenInvokedWithEmptyTail_thenShouldReturnTheEmptyTail() {
-        Nil expected = ListFactory.empty();
+        List expected = ListFactory.empty();
         List<Integer> list = ListFactory.of(1);
 
         List<Integer> actual = list.tail();
@@ -228,7 +227,7 @@ public class ConsTest {
 
     @Test
     public void dropTest_givenANumGreaterThanTheSizeOfTheList_thenShouldReturnEmptyList() {
-        Nil expected = ListFactory.empty();
+        List expected = ListFactory.empty();
         List<Integer> list = ListFactory.of(1, 2, 3);
 
         List<Integer> actual =  list.drop(10);

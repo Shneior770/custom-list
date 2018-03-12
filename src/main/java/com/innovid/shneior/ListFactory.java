@@ -28,7 +28,7 @@ public class ListFactory {
      * This method creates an Empty List.
      * @return empty List.
      */
-    public static Nil empty() {
+    public static List empty() {
         return new Nil();
     }
 }

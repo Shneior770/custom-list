@@ -2,6 +2,7 @@ package com.innovid.shneior;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
 public class ListFactoryTest {
 
     @Test
@@ -37,7 +38,7 @@ public class ListFactoryTest {
     public void emptyTest_whenInvoked_thenShouldReturnNil() {
         List expected = ListFactory.of();
 
-        Nil actual = ListFactory.empty();
+        List actual = ListFactory.empty();
 
         assertEquals(expected, actual);
     }

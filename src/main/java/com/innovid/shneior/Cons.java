@@ -6,12 +6,12 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Cons<T> implements List<T> {
+class Cons<T> implements List<T> {
 
     private final T head;
     private final List<T> tail;
 
-    public Cons(T head, List<T> tail) {
+    Cons(T head, List<T> tail) {
       this.head = head;
       this.tail = tail;
 }
@@ -55,7 +55,7 @@ public class Cons<T> implements List<T> {
 
     @Override
     public long size() {
-        return tail.size() + 1;
+        return 1 + tail.size();
     }
 
     @Override
@@ -75,15 +75,18 @@ public class Cons<T> implements List<T> {
         if (n == 0) {
             return new Nil<>();
         }
-        if (n < 0) {
-            throw new IndexOutOfBoundsException();
+
+        // Note: in this point n must be diff than 0
+        int j = ((n > 0) ? 1 : -1);
+
+        switch (j) {
+            case 1:
+                return new Cons<>(head, tail.take(-- n));
+            default:
+                // Note: we do not support take with negative values
+                throw new IndexOutOfBoundsException();
         }
-        if (n == 1) {
-            return new Cons<>(head, new Nil<>());
-        }
-        else {
-             return new Cons<>(head, tail.take(-- n));
-        }
+
     }
 
     @Override
@@ -92,13 +95,16 @@ public class Cons<T> implements List<T> {
         if (n == 0) {
             return this;
         }
-        if (n < 0) {
-            throw new IndexOutOfBoundsException();
+        int j = ((n > 0) ? 1 : -1);
+
+        switch (j) {
+            case 1:
+                return tail.drop(-- n);
+            default:
+                // Note: we do not support take with negative values
+                throw new IndexOutOfBoundsException();
         }
-        if (n == 1) {
-            return tail;
-        }
-        return tail.drop(-- n);
+
     }
 
     @Override
@@ -130,11 +136,11 @@ public class Cons<T> implements List<T> {
     }
 
     public String getString() {
-
-        if (head == null) {
-            return "null" + ", " + tail.getString();
+        String headAsString = "null";
+        if (head != null) {
+            headAsString = head.toString();
         }
-        return head.toString() + ", " + tail.getString();
+        return headAsString + ", " + tail.getString();
     }
 
     @Override
