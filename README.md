@@ -1,14 +1,19 @@
 # Custom List Library.
 
 This library allows you to create a List in java. it is similar to the Java.util.List,  
-but provides some additional methods.
+but provides some additional operation methods.  
 
 ## Motivation:
 
 I wrote this project as apart of my _java_ exercise.  
 
 ## Usage: 
-Below i will show you some examples of how to use this library.
+This Library provides some operation methods that you can apply on the list.   
+Each operation method returns a new List so you can chain one List to another and get the end result:
+```java
+String result = list.filter(i -> i % 2 == 0).map(i -> i + "!").take(10).toString();
+```
+Below i will show you some more examples of how to use this library.
 - To create a List of any object use the helper method of(), implemented in the static ListFactory class :
 
 ```java  
@@ -63,4 +68,18 @@ List<Integer> filteredList =  ListFactory.of(1, 2, 3).filter(i -> i % 2 == 0); /
 ```java
 List<String> mappedList =  ListFactory.of(1, 2, 3).map(i -> i + "!"); // mappedList = List(1!, 2!, 3!);
 ```
+- You can take n elements form the head of the List by calling the take() method :
+```java
+List<Integer> list = ListFactory.of(1, 2, 3).take(2); // list = List(1, 2).
+// note: this method may throw exception if no element found in the provided index,   
+// e.g. list.take(-1).
+```   
+Note: if the List has less then n elements, method will return all this list elements.
+// List<Integer> list = ListFactory.of(1, 2, 3).take(4); // list = List(1, 2, 3).
 
+- You can drop n elements from the head of the List by calling the drop() method :
+```java
+// List<Integer> list = ListFactory.of(1, 2, 3).drop(2); // list = List(3).
+```
+Note: if the List has less then n elements, method will return empty List.
+// List<Integer> list = ListFactory.of(1, 2, 3).drop(4); // list = List().
