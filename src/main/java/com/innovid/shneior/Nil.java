@@ -102,4 +102,9 @@ public class Nil<T> implements List<T> {
         return true;
     }
 
+    @Override
+    public List<T> add(T type) {
+        return this;
+    }
+
 }

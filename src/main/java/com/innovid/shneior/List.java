@@ -125,4 +125,5 @@ public interface List<T> {
      */
     boolean equals(Object object);
 
+    List<T> add(T type);
 }

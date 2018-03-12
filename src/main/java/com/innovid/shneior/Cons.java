@@ -125,12 +125,7 @@ class Cons<T> implements List<T> {
     }
 
     public String getString() {
-        String headAsString = "null";
-        if (head != null) {
-            headAsString = head.toString();
-        }
-        return headAsString + ", " + tail.getString();
-
+        return head + ", " + tail.getString();
     }
 
     @Override
@@ -159,6 +154,11 @@ class Cons<T> implements List<T> {
         Cons<?> cons = (Cons<?>) o;
         return Objects.equals(head, cons.head) &&
                 Objects.equals(tail, cons.tail);
+    }
+
+    @Override
+    public List<T> add(T type) {
+        return null;
     }
 
     @Override

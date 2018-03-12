@@ -354,7 +354,6 @@ public class ConsTest {
         assertEquals(expected, actual);
     }
 
-
     @Test
     public void foldLeftTest_givenACCAndOperator_thenShouldApplyTheOperatorToTheACCForEachElementAndReturnTheResult() {
         List<Integer> list = ListFactory.of(1, 2, 3);
