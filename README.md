@@ -74,12 +74,12 @@ List<Integer> list = ListFactory.of(1, 2, 3).take(2); // list = List(1, 2).
 // note: this method may throw exception if no element found in the provided index,   
 // e.g. list.take(-1).
 ```   
-Note: if the List has less then n elements, method will return all this list elements.
+Note: if the List has less then n elements, method will return all this list elements :  
 // List<Integer> list = ListFactory.of(1, 2, 3).take(4); // list = List(1, 2, 3).
 
 - You can drop n elements from the head of the List by calling the drop() method :
 ```java
 // List<Integer> list = ListFactory.of(1, 2, 3).drop(2); // list = List(3).
 ```
-Note: if the List has less then n elements, method will return empty List.
+Note: if the List has less then n elements, method will return empty List :    
 // List<Integer> list = ListFactory.of(1, 2, 3).drop(4); // list = List().
