@@ -83,7 +83,7 @@ List<String> list = ListFactory.of("a", "b", "c").take(4) // list = List(a, b, c
 
 - You can drop n elements from the head of the List by calling the drop() method:
 ```java
-// List<String> list = ListFactory.of("a", "b", "c").drop(2); // list = List(c)
+List<String> list = ListFactory.of("a", "b", "c").drop(2); // list = List(c)
 // note: this method may throw exception if the provided n is less then 0,   
 // e.g. list.drop(-1)
 ```
