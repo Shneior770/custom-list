@@ -9,7 +9,7 @@ I wrote this project as apart of my _java_ exercise.
 
 ## Usage: 
 This Library provides some operation methods that you can apply on the list.   
-Each operation method returns a new List so you can chain one List to another and get the end result:
+Each operation method returns a new List so you can chain one List to another and get the final result :
 ```java
 String result = list.filter(i -> i % 2 == 0).map(i -> i + "!").take(10).toString();
 ```
