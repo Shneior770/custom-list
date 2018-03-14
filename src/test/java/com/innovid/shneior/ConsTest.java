@@ -478,7 +478,7 @@ public class ConsTest {
     }
 
     @Test
-    public void flatMapTest_() {
+    public void flatMapTest_givenAFunction_thenShouldReturnAListThatEachElementIsFromTheGivenFunction() {
         List<String> list = ListFactory.of("a", "b", "c");
         List<String> expected = ListFactory.of("a", "A", "b", "B", "c", "C");
 
@@ -486,4 +486,5 @@ public class ConsTest {
 
         assertEquals(expected, actual);
     }
+
 }
