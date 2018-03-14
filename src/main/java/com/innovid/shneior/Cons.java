@@ -60,6 +60,7 @@ class Cons<T> implements List<T> {
 
     @Override
     public T at(int n) {
+
         if (n < 0) {
             throw new IndexOutOfBoundsException();
         }
@@ -157,8 +158,26 @@ class Cons<T> implements List<T> {
     }
 
     @Override
-    public List<T> add(T type) {
-        return null;
+    public List<T> add(T item) {
+        return new Cons<>(head, tail.add(item));
+    }
+
+    @Override
+    public List<T> prepend(T item) {
+        return new Cons<>(item, this);
+    }
+
+    @Override
+    public <R> List<R> flatMap(Function<T, List<R>> function) {
+        List<R> list = function.apply(head);
+
+        return list.union(tail.flatMap(function));
+
+    }
+
+    @Override
+    public List<T> union(List<T> other) {
+        return new Cons<>(head, tail.union(other));
     }
 
     @Override

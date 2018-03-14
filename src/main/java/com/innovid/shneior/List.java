@@ -125,5 +125,32 @@ public interface List<T> {
      */
     boolean equals(Object object);
 
-    List<T> add(T type);
+    /**
+     * This method add the provided item to the end of this List.
+     * @param item the item to add to the List.
+     * @return a new List contains of all the desired elements.
+     */
+    List<T> add(T item);
+
+    /**
+     * This method add the provided element to the start of this List.
+     * @param item the item to add to the List.
+     * @return a new List contains of all the desired elements.
+     */
+    List<T> prepend(T item);
+
+    /**
+     * This method returns a flatted List for a given function.
+     * @param function the function to be applied for each element of the List.
+     * @param <R> this method may return a List of <R>.
+     * @return a new List consist of all the desired elements.
+     */
+    <R> List<R> flatMap(Function<T, List<R>> function);
+
+    /**
+     * This method returns a new List consist of the current List and the provided List.
+     * @param other an other List to be added to the end of the current List.
+     * @return a new List consist of all the desired elements.
+     */
+    List<T> union(List<T> other);
 }

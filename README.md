@@ -31,7 +31,6 @@ List emptyList = ListFactory.empty(); // emptyList = List()
 List emptyList = ListFactory.of(); // emptyList = List()
 ```
 - You can get the first element of the List by calling the `head()` method, or the `headOption()` method: 
- 
 ```java
 // calling head():
 int head = ListFactory.of(1, 2, 3).head(); // head = 1
@@ -42,27 +41,38 @@ Optional head =  ListFactory.of(1, 2, 3).headOption() // head = Optional[1]
 Optional emptyHead = ListFactory.empty().headOption() // emptyHead = Optional.empty
 ```
 - You can get all of the List elements except the first one by calling the `tail()` method:
-
 ```java
 List<Integer> tail = ListFactory.of(1, 2, 3).tail() // tail = List(2, 3)
 // note: this method may throw exception if the List is empty 
 ```
+- You can add an element to the end of the List by calling the `add()` method:
+```java
+List<Integer> integerList = ListFactory.of(1, 2, 3).add(4) // integerList = List(1, 2, 3, 4)
+// note: method will behave the same when invoked on an empty List
+```
+- You can add an element to the start of the List by calling the `prepend()` method:
+```java
+List<Integer> integerList = ListFactory.of(1, 2, 3).prepend(0); // integerList = List(d, a, b, c)
+// note: method will behave the same when invoked on an empty List
+```
+- You can append one List to another by calling the `union()` method:
+```java
+List<String> list =  ListFactory.of("a", "b", "c").union(ListFactory.of("d", "e"); // list = List(a, b, c, d, e)
+// note: method will behave the same when invoked on an empty List
+```
 - You can get an element by providing its index in the List, either by calling the `at()` or the `apply()` method:
-
 ```java
 String element1 =  ListFactory.of("a", "b", "c").at(1); // element1 = a
 String element2 =  ListFactory.of("a", "b", "c").apply(1); // element2 = a
 // note: both of this methods may throw exception when the List is empty
 ```
 - You can remove an element by calling the `remove()` method, providing its index in the List:
-
 ```java
 List<String> list = ListFactory.of("a", "b", "c").remove(1); // list = List(a, c)
 // note: this method may throw exception if no element found at the provided index,   
 // e.g. list.remove(-1)/list.remove(3)
 ```
 - You can filter Your List by calling the `filter()` method:
-
 ```java
 List<Integer> filteredList =  ListFactory.of(1, 2, 3).filter(i -> i % 2 == 0); // filteredList = List(2)
 ```
@@ -91,11 +101,18 @@ This method will return an empty List if this List has less then n elements:
 ```java
 List<String> list = ListFactory.of("a", "b", "c").drop(4); // list = List()
 ```   
-
-- You can get the longest prefix of the List whose elements all satisfy the provided predicate of the `takeWhile()` method: 
+- You can get the longest prefix of the List whose elements all satisfy the provided predicate of the `takeWhile()`  
+ method: 
 ```java
 List<Integer> list = ListFactory.of(2, 4, 7, 8).takeWhile(i -> i % 2 == 0); // list = List(2, 4)
 // note: method will return an empty List when invoked on an empty List
+```
+- You can call the `flatMap` method witch builds a new List by applying a function to all elements of this list  
+ and returns this List:
+ ```java
+List<String> list = ListFactory.of("a", "b", "c").flatMap(s -> ListFactory.of(s.toLowerCase(), s.toUpperCase()));  
+// list = List("a", "A", "b", "B", "c", "C")  
+// note: when invoked from an empty List, this method will return always empty List 
 ```
 - You can fold left all of the List elements by calling the `foldLeft()` method:
 ```java

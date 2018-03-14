@@ -103,8 +103,22 @@ public class Nil<T> implements List<T> {
     }
 
     @Override
-    public List<T> add(T type) {
-        return this;
+    public List<T> add(T item) {
+        return new Cons<>(item, new Nil<>());
     }
 
+    @Override
+    public List<T> prepend(T item) {
+        return new Cons<>(item, new Nil<>());
+    }
+
+    @Override
+    public <R> List<R> flatMap(Function<T, List<R>> function) {
+        return new Nil<>();
+    }
+
+    @Override
+    public List<T> union(List<T> other) {
+        return other;
+    }
 }

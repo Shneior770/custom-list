@@ -447,4 +447,43 @@ public class ConsTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void prependTest_whenInvoked_thenShouldAddTheGivenElementToTheHeadOfTheList() {
+        List<Integer> expected = ListFactory.of(0, 1, 2);
+
+        List<Integer> actual = ListFactory.of(1, 2).prepend(0);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTest_givenValidItem_thenShouldAddTheItemToTheEndOfTheListAndReturnThisList() {
+        List<Integer> expected = ListFactory.of(1, 2, 3);
+        List<Integer> list = ListFactory.of(1, 2);
+
+        List<Integer> actual = list.add(3);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void unionTest_givenAnotherList_thenShouldAddTheGivenListToTheCurrentList() {
+        List<String> list1 = ListFactory.of("a", "b", "c");
+        List<String> list2 = ListFactory.of("d", "e");
+        List<String> expected = ListFactory.of("a", "b", "c", "d", "e");
+
+        List<String> actual = list1.union(list2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void flatMapTest_() {
+        List<String> list = ListFactory.of("a", "b", "c");
+        List<String> expected = ListFactory.of("a", "A", "b", "B", "c", "C");
+
+        List<String> actual = list.flatMap(s -> ListFactory.of(s.toLowerCase(), s.toUpperCase()));
+
+        assertEquals(expected, actual);
+    }
 }

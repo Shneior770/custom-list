@@ -154,6 +154,45 @@ public class NilTest {
     }
 
     @Test
+    public void prependTest_whenInvoked_thenShouldAddTheGivenElementToTheHeadOfTheListAndReturnThisList() {
+        List<Integer> expected = ListFactory.of(0);
+
+        List<Integer> actual = ListFactory.empty().prepend(0);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addTest_givenValidItem_thenShouldAddTheItemToTheEndOfTheListAndReturnThisList() {
+        List<Integer> expected = ListFactory.of(1, 2, 3);
+
+        List<Integer> actual = ListFactory.empty().add(1).add(2).add(3);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void unionTest_givenAnotherList_thenShouldAddTheGivenListToTheCurrentList() {
+        List<String> list1 = ListFactory.empty();
+        List<String> list2 = ListFactory.of("a", "b", "c");
+        List<String> expected = ListFactory.of("a", "b", "c");
+
+        List<String> actual = list1.union(list2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void flatMapTest_whenInvoked_thenShouldReturnNil() {
+        List<String> list = ListFactory.empty();
+        List<String> expected = ListFactory.empty();
+
+        List actual = list.flatMap(s -> ListFactory.of(s.toUpperCase(), s.toLowerCase()));
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void equalsTest_givenMatchingObjectAndElements_shouldReturnTrue() {
         List<Integer> list1 = ListFactory.empty();
         List<Integer> list2 = ListFactory.empty();
