@@ -2,6 +2,7 @@ package com.innovid.shneior;
 
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -153,4 +154,10 @@ public interface List<T> {
      * @return a new List consist of all the desired elements.
      */
     List<T> union(List<T> other);
+
+    /**
+     * This method applies the provided function for each element in the List.
+     * @param consumer the function to be applied.
+     */
+    void forEach(Consumer<T> consumer);
 }

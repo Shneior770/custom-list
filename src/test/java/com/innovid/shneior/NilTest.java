@@ -2,6 +2,8 @@ package com.innovid.shneior;
 
 import org.junit.Test;
 import java.util.Optional;
+import java.util.function.Consumer;
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 public class NilTest {
 
@@ -221,4 +223,12 @@ public class NilTest {
         assertFalse(actual);
     }
 
+    @Test
+    public void forEachTest_whenInvoked_thenShouldDoNothing() {
+        Consumer consumerMock = mock(Consumer.class);
+        ListFactory.empty().forEach(consumerMock);
+
+        verify(consumerMock, never()).accept(any());
+
+    }
 }

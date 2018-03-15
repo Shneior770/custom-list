@@ -1,7 +1,11 @@
 package com.innovid.shneior;
+
 import org.junit.Test;
 import java.util.Optional;
+import java.util.function.Consumer;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class ConsTest {
 
@@ -485,6 +489,16 @@ public class ConsTest {
         List<String> actual = list.flatMap(s -> ListFactory.of(s.toLowerCase(), s.toUpperCase()));
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void forEachTest_givenAFunction_thenShouldApplyItForEachElementInTheList() {
+        List<Integer> list = ListFactory.of(1, 2, 3);
+        Consumer consumer = mock(Consumer.class);
+        list.forEach(consumer);
+        verify(consumer).accept(1);
+        verify(consumer).accept(2);
+        verify(consumer).accept(3);
     }
 
 }

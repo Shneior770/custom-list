@@ -2,6 +2,7 @@ package com.innovid.shneior;
 
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -120,5 +121,10 @@ public class Nil<T> implements List<T> {
     @Override
     public List<T> union(List<T> other) {
         return other;
+    }
+
+    @Override
+    public void forEach(Consumer<T> consumer) {
+
     }
 }

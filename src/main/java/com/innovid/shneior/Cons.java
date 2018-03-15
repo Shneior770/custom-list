@@ -3,6 +3,7 @@ package com.innovid.shneior;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -178,6 +179,12 @@ class Cons<T> implements List<T> {
     @Override
     public List<T> union(List<T> other) {
         return new Cons<>(head, tail.union(other));
+    }
+
+    @Override
+    public void forEach(Consumer<T> consumer) {
+        consumer.accept(head);
+        tail.forEach(consumer);
     }
 
     @Override

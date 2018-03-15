@@ -52,9 +52,14 @@ List<Integer> integerList = ListFactory.of(1, 2, 3).add(4) // integerList = List
 ```
 - You can add an element to the start of the List by calling the `prepend()` method:
 ```java
-List<Integer> integerList = ListFactory.of(1, 2, 3).prepend(0); // integerList = List(d, a, b, c)
+List<Integer> integerList = ListFactory.of(1, 2, 3).prepend(0); // integerList = List(0, 1, 2, 3)
 // note: method will behave the same when invoked on an empty List
 ```
+- You can apply a method for each element in the List by calling the `forEach()` method:
+```java
+ListFactory.of(1, 2, 3).foreach(i -> System.out.print("i is " + i + ", ")); // prints: i is 1, i is 2, i is 3,
+// note: this method will affect nothing when invoked on an empty List
+``` 
 - You can append one List to another by calling the `union()` method:
 ```java
 List<String> list =  ListFactory.of("a", "b", "c").union(ListFactory.of("d", "e"); // list = List(a, b, c, d, e)
