@@ -99,6 +99,13 @@ public class NilTest {
         nil.apply(0);
     }
 
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void atTest_givenAnyNumber_thenShouldThrowIndexOutOfBoundsException() {
+        List<String> nil = ListFactory.empty();
+
+        nil.at(0);
+    }
+
     @Test
     public void headOptionTest_whenInvoked_thenShouldReturnEmptyOptionalObject() {
         List<String> nil = ListFactory.empty();
