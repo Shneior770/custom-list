@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 public interface List<T> {
     /**
-     * This method returns the first element of the List.
+     * This method returns the first element of the List if it is non empty, and throws an exception otherwise.
      * @return the first element of this list */
     T head();
 
@@ -18,22 +18,22 @@ public interface List<T> {
     List<T> tail();
 
     /**
-     * This method returns a filtered List of all the elements who's satisfy the predicate.
+     * This method returns a filtered List of all the elements that satisfy the predicate.
      * @return a new  list consisting of all the element whose satisfy the given predicate.
-     * <b>example :</b> for an integer list contains (1, 2, 3, 4) you can do :
+     * <b>example :</b> for an integer list contains (1, 2, 3, 4) you can do:
      * numbers.filter(i -> i % 2 == 0) and then get a result of list contains 2, 4
      * */
     List<T> filter(Predicate<T> predicate);
 
-    /** This method returned a mapped List of all the elements who's satisfy the predicate.
+    /** This method returns a mapped List of all the elements in this list.
      * @return a new list consisting of all the mapped elements.
-     * <b>example :</b> for an integer list contains (1, 2, 3) you can do :
+     * <b>example :</b> for an integer list contains (1, 2, 3) you can do:
      * numbers.map(i -> i + 1) and then get a result of list contains 2, 3, 4.
      */
     <R> List<R> map(Function<T, R> function);
 
     /**
-     * This method Returns the status of the List.
+     * This method returns the status of the List.
      * @return true for an empty list, false a non empty list.
      */
     boolean isEmpty();
@@ -44,7 +44,7 @@ public interface List<T> {
      */
     boolean nonEmpty();
 
-    /** This method Returns the size of the List.
+    /** This method returns the size of the List.
      * @return the size of this list.
      */
     long size();
@@ -57,17 +57,17 @@ public interface List<T> {
     T at(int index);
 
     /**
-     * This method returns a List consist of all the elements from the first element to n.
+     * This method returns a List consisting of all the elements from the first element to n.
      * @param n the number of elements to take from the head of this list.
-     * @return a list consist of the desired elements.
+     * @return a list consisting of the desired elements.
      */
     List<T> take(int n);
 
     /**
-     * This method returns a List consist of all the elements from the n element
+     * This method returns a List consisting of all the elements from the n element
      * to the end of the List.
      * @param n the number of elements to drop from the head of this list.
-     * @return a list consist of the desired elements.
+     * @return a list consisting of the desired elements.
      */
     List<T> drop(int n);
 
@@ -85,9 +85,9 @@ public interface List<T> {
     Optional<T> headOption();
 
     /**
-     * This method returns a List consist of all the prefix element who's satisfy the predicate.
+     * This method returns a List consisting of all the prefix element who's satisfy the predicate.
      * @param predicate to apply of the elements of this list.
-     * @return new list consist of the longest prefix of the list whose elements all satisfy the predicate.
+     * @return new list consisting of the longest prefix of the list whose elements all satisfy the predicate.
      * <b>example :</b> for an integer list contains (1, 2, 3, 4) you can do :
      * numbers.takeWhile(i -> i % 2 == 0) and then get a result of list contains 2.
      */
@@ -115,14 +115,15 @@ public interface List<T> {
     /**
      * This method returns a List of all the elements except of the element in the index passed.
      * @param index the index of the undesired element.
-     * @return a new list consist of all desired elements.
+     * @return a new list consisting of all desired elements.
      */
     List<T> remove(int index);
 
     /**
-     * // This method equals between this List elements and the object passed.
+     * This method checks for equality between this list and the object passed.
      * @param object the object to be checked.
-     * @return true if all the element in this list are the same as the Object, otherwise false.
+     * @return true if and only if the passed object is a List containing the same elements for this list,
+     * in the same order
      */
     boolean equals(Object object);
 
@@ -144,16 +145,16 @@ public interface List<T> {
      * This method returns a flatted List for a given function.
      * @param function the function to be applied for each element of the List.
      * @param <R> this method may return a List of <R>.
-     * @return a new List consist of all the desired elements.
+     * @return a new List consisting of all the desired elements.
      */
     <R> List<R> flatMap(Function<T, List<R>> function);
 
     /**
-     * This method returns a new List consist of the current List and the provided List.
+     * This method returns a new List consisting of the current List and the provided List.
      * @param other an other List to be added to the end of the current List.
-     * @return a new List consist of all the desired elements.
+     * @return a new List consisting of all the desired elements.
      */
-    List<T> union(List<T> other);
+    List<T> concat(List<T> other);
 
     /**
      * This method applies the provided function for each element in the List.

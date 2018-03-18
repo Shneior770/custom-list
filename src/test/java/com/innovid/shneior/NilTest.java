@@ -1,6 +1,8 @@
 package com.innovid.shneior;
 
 import org.junit.Test;
+
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Consumer;
 import static org.mockito.Mockito.*;
@@ -8,15 +10,15 @@ import static org.junit.Assert.*;
 public class NilTest {
 
 
-    @Test (expected = IllegalArgumentException.class)
-    public void headTest_whenInvoked_thenShouldThrowIllegalArgumentException() {
+    @Test (expected = NoSuchElementException.class)
+    public void headTest_whenInvoked_thenShouldThrowNoSuchElementException() {
         List<String> nil = ListFactory.empty();
 
         nil.head();
     }
 
-    @Test (expected = IllegalArgumentException.class)
-    public void tailTest_whenInvoked_thenShouldThrowIllegalArgumentException() {
+    @Test (expected = UnsupportedOperationException.class)
+    public void tailTest_whenInvoked_thenShouldThrowUnsupportedOperationException() {
         List<String> nil = ListFactory.empty();
 
         nil.tail();
@@ -179,7 +181,7 @@ public class NilTest {
         List<String> list2 = ListFactory.of("a", "b", "c");
         List<String> expected = ListFactory.of("a", "b", "c");
 
-        List<String> actual = list1.union(list2);
+        List<String> actual = list1.concat(list2);
 
         assertEquals(expected, actual);
     }

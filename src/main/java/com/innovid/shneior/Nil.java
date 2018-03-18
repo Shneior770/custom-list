@@ -1,5 +1,6 @@
 package com.innovid.shneior;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -10,12 +11,12 @@ public class Nil<T> implements List<T> {
 
     @Override
     public T head() {
-       throw new IllegalArgumentException();
+       throw new NoSuchElementException("head of empty list");
     }
 
     @Override
     public List<T> tail() {
-        throw new IllegalArgumentException();
+        throw new UnsupportedOperationException("tail of empty list");
     }
 
     @Override
@@ -119,7 +120,7 @@ public class Nil<T> implements List<T> {
     }
 
     @Override
-    public List<T> union(List<T> other) {
+    public List<T> concat(List<T> other) {
         return other;
     }
 

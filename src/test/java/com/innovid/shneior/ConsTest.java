@@ -476,7 +476,7 @@ public class ConsTest {
         List<String> list2 = ListFactory.of("d", "e");
         List<String> expected = ListFactory.of("a", "b", "c", "d", "e");
 
-        List<String> actual = list1.union(list2);
+        List<String> actual = list1.concat(list2);
 
         assertEquals(expected, actual);
     }

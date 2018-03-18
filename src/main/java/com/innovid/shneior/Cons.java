@@ -172,13 +172,13 @@ class Cons<T> implements List<T> {
     public <R> List<R> flatMap(Function<T, List<R>> function) {
         List<R> list = function.apply(head);
 
-        return list.union(tail.flatMap(function));
+        return list.concat(tail.flatMap(function));
 
     }
 
     @Override
-    public List<T> union(List<T> other) {
-        return new Cons<>(head, tail.union(other));
+    public List<T> concat(List<T> other) {
+        return new Cons<>(head, tail.concat(other));
     }
 
     @Override
