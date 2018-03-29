@@ -3,7 +3,6 @@ package com.innovid.shneior;
 import org.junit.Test;
 import java.util.Optional;
 import java.util.function.Consumer;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

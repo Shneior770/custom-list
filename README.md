@@ -22,8 +22,10 @@ import com.innovid.shneior.ListFactory;
 import com.innovid.shneior.List;  
 
 List<Integer> integerList = ListFactory.of(1, 2, 3);  // integerList = List(1, 2, 3)
-List<String> stringList = ListFactory.of("a", "b", "c"); // stringList = List("a", "b", "c")
+List<String> stringList = ListFactory.of("hello", "world"); // stringList = List("hello", "world")
 ```   
+![create_int](images/1creation1.png)
+![create_string](images/1creation2.png)
 
 - To create an empty List, use the helper method `empty()`, implemented in the ListFactory class:
 ```java
@@ -32,6 +34,7 @@ List emptyList = ListFactory.empty(); // emptyList = List()
 // You can also use the of() helper, providing an empty args list:
 List emptyList = ListFactory.of(); // emptyList = List()
 ```
+![create_empty](images/2creation_empty1.png)
 
 - You can get the first element of the List by calling the `head()` method, or the `headOption()` method: 
 ```java
@@ -51,18 +54,35 @@ List<Integer> tail = ListFactory.of(1, 2, 3).tail() // tail = List(2, 3)
 // note: this method will throw an exception if the List is empty:
 ListFactory.empty().tail(); // throws UnsupportedOperationException("tail of empty list") 
 ```
+![tail](images/3tail1.png)
 
 - You can add an element to the end of the List by calling the `add()` method:
 ```java
 List<Integer> integerList = ListFactory.of(1, 2, 3).add(4) // integerList = List(1, 2, 3, 4)
 List<Integer> numbers = ListFactory.empty().add(1).add(2).add(3); // numbers = List(1, 2, 3) 
 ```
+![add](images/3add1.gif)
 
 - You can add an element to the start of the List by calling the `prepend()` method:
 ```java
 List<Integer> integerList = ListFactory.of(1, 2, 3).prepend(0); // integerList = List(0, 1, 2, 3)
 List<Integer> zeroList = ListFactory.empty().prepend(0); // zeroList = List(0)
 ```
+![prepend](images/prepend.gif)
+
+- You can apply for each element in the List any operation using the `map()` method, and get a transformed list:
+```java
+List<String> mappedList =  ListFactory.of(1, 2, 3).map(i -> i + "!"); // mappedList = List(1!, 2!, 3!)
+List<String> upperList =   ListFactory.of("hello", "world").map(i -> i.toUpperCase()); // mappedList = List("HELLO", "WORLD")
+```
+![filter](images/map.gif)
+
+- You can filter your List by calling the `filter()` method:
+```java
+List<Integer> filteredList =  ListFactory.of(1, 2, 3, 4, 5, 6).filter(i -> i % 2 == 0); // filteredList = List(2, 4, 6)
+```
+![filter](images/filter.gif)
+
 
 - You can apply a method for each element in the List by calling the `forEach()` method:
 ```java
@@ -89,16 +109,6 @@ ListFactory.empty().at(0); // throws IndexOutOfBoundsException
 List<String> list = ListFactory.of("a", "b", "c").remove(1); // list = List(a, c)
 // note: this method will throw an exception if no element found at the provided index, 
 // e.g. list.remove(-1)/list.remove(3)
-```
-
-- You can filter your List by calling the `filter()` method:
-```java
-List<Integer> filteredList =  ListFactory.of(1, 2, 3).filter(i -> i % 2 == 0); // filteredList = List(2)
-```
-
-- You can apply for each element in the List any operation using the `map()` method, and get a transformed list:
-```java
-List<String> mappedList =  ListFactory.of(1, 2, 3).map(i -> i + "!"); // mappedList = List(1!, 2!, 3!)
 ```
 
 - You can take the first n elements from List by calling the `take()` method:
@@ -137,6 +147,7 @@ List<String> list = ListFactory.of("a", "b", "c").flatMap(s -> ListFactory.of(s.
 // list = List("a", "A", "b", "B", "c", "C")  
 // note: when invoked from an empty List, this method will return an empty List 
 ```
+![filter](images/flatMap.gif)
 
 - You can fold left all of the List elements by calling the `foldLeft()` method:
 ```java
